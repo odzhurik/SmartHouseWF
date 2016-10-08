@@ -1,0 +1,33 @@
+﻿head{
+ display: block; 
+ height:250px;
+ width:100%;
+ max-width:2000px;
+
+ background: url(Images1/hee2.png) no-repeat  center top;
+ background-size: contain;
+}
+body {
+    background:url(Images1/back.jpg);
+    
+}
+
+  .labelStatus
+  {
+      font-family: "Monotype Corsiva", cursive;
+      font-weight:bold;
+  }
+   .labelstyle
+   {
+       font-family: "Comic Sans MS", cursive, sans-serif;
+       font-weight: bolder;
+       
+   }
+ .app-div {
+            border: 1px dashed;
+            border-color:blue;
+            float: left;
+            margin: 3px;
+            padding: 3px;
+            text-align:center;
+        }

@@ -1,0 +1,28 @@
+﻿.main{
+ display: block; /* Для старых браузеров */
+ height:250px;
+ width:100%;
+ max-width:2000px;
+  /* Высота шапки */
+ background: url(Images1/hee2.png) no-repeat  center top;
+ background-size: contain;
+}
+body {
+    background:url(Images1/back.jpg);
+    
+}
+table {
+    table-layout: fixed;
+    width: 100%; /* Ширина таблицы */
+     
+   }
+   td {
+    padding: 10px;
+  padding-left: 20px;
+    vertical-align:top;
+     margin: 20%;
+   }
+   .labelstyle
+   {
+       font-family: "Comic Sans MS", cursive, sans-serif;
+   }

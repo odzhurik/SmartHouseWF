@@ -3,3 +3,4 @@ C:\Users\Оксана\Documents\Visual Studio 2013\Projects\SmartHouseWF\SmartHo
 C:\Users\Оксана\Documents\Visual Studio 2013\Projects\SmartHouseWF\SmartHouseWF\bin\SmartHouseWF.pdb
 C:\Users\Оксана\Documents\Visual Studio 2013\Projects\SmartHouseWF\SmartHouseWF\obj\Debug\SmartHouseWF.dll
 C:\Users\Оксана\Documents\Visual Studio 2013\Projects\SmartHouseWF\SmartHouseWF\obj\Debug\SmartHouseWF.pdb
+C:\Users\Оксана\Documents\Visual Studio 2013\Projects\SmartHouseWF\SmartHouseWF\obj\Debug\SmartHouseWF.csprojResolveAssemblyReference.cache

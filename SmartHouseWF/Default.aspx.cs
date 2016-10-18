@@ -46,32 +46,60 @@ namespace SmartHouseWF
         {
             foreach (int key in applienceDictionary.Keys)
             {
-                figuresPanel.Controls.Add(new ApplienceControl(key, applienceDictionary));
+                //figuresPanel.Controls.Add(new ApplienceControl(key, applienceDictionary));
+                if (applienceDictionary[key] is Lamp)
+                    figuresPanel.Controls.Add(new LampControl(key, applienceDictionary));
+                if(applienceDictionary[key] is Conditioner)
+                    figuresPanel.Controls.Add(new ConditionerControl(key, applienceDictionary));
+                if(applienceDictionary[key] is Microwave)
+                    figuresPanel.Controls.Add(new MicrowaveControl(key, applienceDictionary));
+                if(applienceDictionary[key] is TV)
+                    figuresPanel.Controls.Add(new TVControl(key, applienceDictionary));
             }
         }
 
         protected void addAppsButton_Click(object sender, EventArgs e)
         {
             Applience app;
+            int id=0;
             switch (dropDownListApp.SelectedIndex)
             {
                 default:
-                    app = new Lamp();
-                    break;
+                    {
+                        app = new Lamp();
+                        id = (int)Session["NextId"];
+                        applienceDictionary.Add(id, app);
+                        figuresPanel.Controls.Add(new LampControl(id, applienceDictionary));
+                        break;
+                    }
                 case 1:
-                    app = new  Conditioner();
-                    break;
+                    {
+                        app = new Conditioner();
+                        id = (int)Session["NextId"];
+                        applienceDictionary.Add(id, app);
+                        figuresPanel.Controls.Add(new ConditionerControl(id, applienceDictionary));
+                        break;
+                    }
                 case 2:
-                    app = new Microwave();
-                    break;
+                    {
+                        app = new Microwave();
+                        id = (int)Session["NextId"];
+                        applienceDictionary.Add(id, app);
+                        figuresPanel.Controls.Add(new MicrowaveControl(id, applienceDictionary));
+                        break;
+                    }
                 case 3:
-                    app = new TV();
-                    break;
+                    {
+                        app = new TV();
+                        id = (int)Session["NextId"];
+                        applienceDictionary.Add(id, app);
+                        figuresPanel.Controls.Add(new TVControl(id, applienceDictionary));
+                        break;
+                    }
             }
 
-            int id = (int)Session["NextId"];
-            applienceDictionary.Add(id, app); 
-            figuresPanel.Controls.Add(new ApplienceControl(id,applienceDictionary)); 
+            
+           
             id++;
             Session["NextId"] = id;
         }

@@ -15,7 +15,8 @@
     <AssemblyName>SmartHouseWF</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -93,7 +94,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\ApplienceControl.cs" />
+    <Compile Include="Controls\ConditionerControl.cs" />
+    <Compile Include="Controls\LampControl.cs" />
+    <Compile Include="Controls\MicrowaveControl.cs" />
+    <Compile Include="Controls\TVControl.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

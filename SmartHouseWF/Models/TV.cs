@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SmartHouseWF.Models
 {
-    public class TV:Applience, IChangleable
+    public class TV:Applience
     {
         public List<string> channels;
         public string currentChannel;

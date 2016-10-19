@@ -30,27 +30,26 @@ namespace SmartHouseWF.Controls
             bUp = new Button();
             bDown = new Button();
             deleteButton = new Button();
-            if (applienceDictionary[id] is Lamp)
-            {
-                imImageLamp = ImageButton();
-                Controls.Add(imImageLamp);
-                GenerateBr();
-                UpAndDownButtons(bDown, bUp);
-                GenerateBr();
+
+            imImageLamp = ImageButton();
+            Controls.Add(imImageLamp);
+            GenerateBr();
+            UpAndDownButtons(bDown, bUp);
+            GenerateBr();
 
 
 
-                lState = LabelofState();
-                lState.ID = "LabelofState" + id;
-                lState.CssClass = "labelStatus";
-                Controls.Add(lState);
-                deleteButton.ID = "deletebutton" + id;
-                deleteButton.Text = "Delete";
-                deleteButton.CssClass = "btn btn-danger";
-                deleteButton.Click += DeleteButtonClick;
-                GenerateBr();
-                Controls.Add(deleteButton);
-            }
+            lState = LabelofState();
+            lState.ID = "LabelofState" + id;
+            lState.CssClass = "labelStatus";
+            Controls.Add(lState);
+            deleteButton.ID = "deletebutton" + id;
+            deleteButton.Text = "Delete";
+            deleteButton.CssClass = "btn btn-danger";
+            deleteButton.Click += DeleteButtonClick;
+            GenerateBr();
+            Controls.Add(deleteButton);
+
         }
         private void DeleteButtonClick(object sender, EventArgs e)
         {
@@ -60,45 +59,44 @@ namespace SmartHouseWF.Controls
         private void bUp_Click(object sender, EventArgs e)
         {
 
-            
-                   if(applienceDictionary[id] is Lamp)
-                    {
-                        Lamp lamp = applienceDictionary[id] as Lamp;
-                        lamp.Up();
-                        lState.Text = lamp.ShowStatus();
-                       
-                    }
-                         
 
             if (!applienceDictionary[id].State)
                 lState.Text = " Turn on " + applienceDictionary[id].Name;
+            else
+            {
+                Lamp lamp = applienceDictionary[id] as Lamp;
+                lamp.Up();
+                lState.Text = lamp.ShowStatus();
+
+            }
+
+
+
         }
 
         private void bDown_Click(object sender, EventArgs e)
         {
-
-           
-                      if(applienceDictionary[id] is Lamp)
-                    {
-                        Lamp lamp = applienceDictionary[id] as Lamp;
-                        lamp.Down();
-                        lState.Text = lamp.ShowStatus();
-                        
-                    }
-                          
             if (!applienceDictionary[id].State)
             {
                 lState.Text = " Turn on " + applienceDictionary[id].Name;
             }
+            else
+            {
+                Lamp lamp = applienceDictionary[id] as Lamp;
+                lamp.Down();
+                lState.Text = lamp.ShowStatus();
+
+            }
+
+
         }
         private void imImage_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            if (applienceDictionary[id] is Lamp)
-            {
-                applienceDictionary[id].On_Off();
-                lState.Text = applienceDictionary[id].ShowStatus();
-            }
-           
+
+            applienceDictionary[id].On_Off();
+            lState.Text = applienceDictionary[id].ShowStatus();
+
+
         }
         private Label Label(string text)
         {
@@ -115,11 +113,12 @@ namespace SmartHouseWF.Controls
             imbt.ID = "imagebutton" + id;
             imbt.ToolTip = "Press the image to turn on";
             imbt.Click += imImage_Click;
-           
-                if(applienceDictionary[id] is Lamp)
-                
-                    imbt.ImageUrl = @"~\Images1\15-Light-Bulb-icon.png";
-                 
+
+
+
+            imbt.ImageUrl = @"~\Images1\15-Light-Bulb-icon1.png";
+            imbt.CssClass = "img-thumbnail";
+
             return imbt;
         }
         protected Label LabelofState()

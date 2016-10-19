@@ -6,7 +6,7 @@ using System.Web;
 
 namespace SmartHouseWF.Models
 {
-    public class Microwave:Applience, IChangleable
+    public class Microwave:Applience
     {
         private bool food;
         private int max=250;

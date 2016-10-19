@@ -8,21 +8,21 @@ using System.Web.UI.WebControls;
 
 namespace SmartHouseWF.Controls
 {
-    public class TVControl:Panel
+    public class TVControl : Panel
     {
         private IDictionary<int, Applience> applienceDictionary;
         private int id;
         private Button bUp;
         private Button bDown;
         private Button deleteButton;
-        private System.Web.UI.WebControls.ImageButton imImageTV;
+        private ImageButton imImageTV;
         private PlaceHolder plTV;
         private Button bShowChannels;
-        private System.Web.UI.WebControls.TextBox tbAddChannel;
+        private TextBox tbAddChannel;
         private Button bAddChannel;
         private Button bPrevChannel;
         private Button bNextChannel;
-        private System.Web.UI.WebControls.Label lState;
+        private Label lState;
         public TVControl(int id, IDictionary<int, Applience> applienceDictionary)
         {
             this.id = id;
@@ -37,82 +37,85 @@ namespace SmartHouseWF.Controls
             bUp = new Button();
             bDown = new Button();
             deleteButton = new Button();
-            if (applienceDictionary[id] is TV)
-            {
-                imImageTV = ImageButton();
-                plTV = new PlaceHolder();
-                plTV.ID = "PlaceHolder" + id;
-                bShowChannels = new Button();
-                bShowChannels.ID = "showChannelsButton" + id;
-                bShowChannels.CssClass = "btn btn-primary";
-                bShowChannels.Text = "Show channels";
-                bShowChannels.Click += bShowChannels_Click;
-                tbAddChannel = TextBox();
-                bAddChannel = new Button();
-                bAddChannel.ID = "addChannelButton" + id;
-                bAddChannel.CssClass = "btn btn-primary";
-                bAddChannel.Text = "Add channel";
-                bAddChannel.Click += bAddChannel_Click;
-                bPrevChannel = new Button();
-                bPrevChannel.ID = "buttonprevchannel" + id;
-                bPrevChannel.Text = "<-";
-                bPrevChannel.CssClass = "btn btn-info";
-                bPrevChannel.Click += bPrevChannel_Click;
-                bNextChannel = new Button();
-                bNextChannel.ID = "buttonNextChannel" + id;
-                bNextChannel.Text = "->";
-                bNextChannel.CssClass = "btn btn-primary";
-                bNextChannel.Click += bNextChannel_Click;
-                Controls.Add(imImageTV);
-                GenerateBr();
-                Controls.Add(bShowChannels);
-                Controls.Add(plTV);
-                GenerateBr();
-                Controls.Add(tbAddChannel);
-                Controls.Add(bAddChannel);
-                GenerateBr();
-                UpAndDownButtons(bDown, bUp);
-                GenerateBr();
-                Controls.Add(bPrevChannel);
-                Controls.Add(bNextChannel);
-                GenerateBr();
 
-                lState = LabelofState();
-                lState.ID = "LabelofState" + id;
-                lState.CssClass = "labelStatus";
-                Controls.Add(lState);
-                deleteButton.ID = "deletebutton" + id;
-                deleteButton.Text = "Delete";
-                deleteButton.CssClass = "btn btn-danger";
-                deleteButton.Click += DeleteButtonClick;
-                GenerateBr();
-                Controls.Add(deleteButton);
-            }
+            imImageTV = ImageButton();
+            plTV = new PlaceHolder();
+            plTV.ID = "PlaceHolder" + id;
+            bShowChannels = new Button();
+            bShowChannels.ID = "showChannelsButton" + id;
+            bShowChannels.CssClass = "btn btn-primary";
+            bShowChannels.Text = "Show channels";
+            bShowChannels.Click += bShowChannels_Click;
+            tbAddChannel = TextBox();
+            bAddChannel = new Button();
+            bAddChannel.ID = "addChannelButton" + id;
+            bAddChannel.CssClass = "btn btn-primary";
+            bAddChannel.Text = "Add channel";
+            bAddChannel.Click += bAddChannel_Click;
+            bPrevChannel = new Button();
+            bPrevChannel.ID = "buttonprevchannel" + id;
+            bPrevChannel.Text = "<-";
+            bPrevChannel.CssClass = "btn btn-info";
+            bPrevChannel.Click += bPrevChannel_Click;
+            bNextChannel = new Button();
+            bNextChannel.ID = "buttonNextChannel" + id;
+            bNextChannel.Text = "->";
+            bNextChannel.CssClass = "btn btn-primary";
+            bNextChannel.Click += bNextChannel_Click;
+            Controls.Add(imImageTV);
+            GenerateBr();
+            Controls.Add(bShowChannels);
+            Controls.Add(plTV);
+            GenerateBr();
+            Controls.Add(tbAddChannel);
+            Controls.Add(bAddChannel);
+            GenerateBr();
+            UpAndDownButtons(bDown, bUp);
+            GenerateBr();
+            Controls.Add(bPrevChannel);
+            Controls.Add(bNextChannel);
+            GenerateBr();
+
+            lState = LabelofState();
+            lState.ID = "LabelofState" + id;
+            lState.CssClass = "labelStatus";
+            Controls.Add(lState);
+            deleteButton.ID = "deletebutton" + id;
+            deleteButton.Text = "Delete";
+            deleteButton.CssClass = "btn btn-danger";
+            deleteButton.Click += DeleteButtonClick;
+            GenerateBr();
+            Controls.Add(deleteButton);
+
         }
         private void bNextChannel_Click(object sender, EventArgs e)
         {
-
-            TV tv = (TV)applienceDictionary[id];
-            tv.NextChannel();
-            lState.Text = tv.ShowStatus();
-
             if (!applienceDictionary[id].State)
             {
                 lState.Text = "Turn on TV";
             }
+            else
+            {
+                TV tv = (TV)applienceDictionary[id];
+                tv.NextChannel();
+                lState.Text = tv.ShowStatus();
+            }
+
         }
 
         private void bPrevChannel_Click(object sender, EventArgs e)
         {
-
-            TV tv = (TV)applienceDictionary[id];
-            tv.PrevChannel();
-            lState.Text = tv.ShowStatus();
-
             if (!applienceDictionary[id].State)
             {
                 lState.Text = "Turn on TV";
             }
+            else
+            {
+                TV tv = (TV)applienceDictionary[id];
+                tv.PrevChannel();
+                lState.Text = tv.ShowStatus();
+            }
+
         }
 
         private void DeleteButtonClick(object sender, EventArgs e)
@@ -124,40 +127,43 @@ namespace SmartHouseWF.Controls
 
         private void bUp_Click(object sender, EventArgs e)
         {
-
-           
-                        TV tv = applienceDictionary[id] as TV;
-                        tv.Up();
-                        lState.Text = tv.ShowStatus();
-                       
-                   
-
             if (!applienceDictionary[id].State)
                 lState.Text = " Turn on " + applienceDictionary[id].Name;
+            else
+            {
+
+                TV tv = applienceDictionary[id] as TV;
+                tv.Up();
+                lState.Text = tv.ShowStatus();
+            }
+
+
+
         }
 
         private void bDown_Click(object sender, EventArgs e)
         {
-
-                    if(applienceDictionary[id] is TV)
-                    {
-                        TV tv = applienceDictionary[id] as TV;
-                        tv.Down();
-                        lState.Text = tv.ShowStatus();
-                        
-                    }
-            
             if (!applienceDictionary[id].State)
             {
                 lState.Text = " Turn on " + applienceDictionary[id].Name;
             }
+            else
+            {
+                TV tv = applienceDictionary[id] as TV;
+                tv.Down();
+                lState.Text = tv.ShowStatus();
+            }
+
+
+
+
         }
         private void imImage_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
 
             applienceDictionary[id].On_Off();
             lState.Text = applienceDictionary[id].ShowStatus();
-            
+
 
         }
         private void bAddChannel_Click(object sender, EventArgs e)
@@ -204,10 +210,10 @@ namespace SmartHouseWF.Controls
         {
             TextBox tb = new TextBox();
             tb.ID = "TextBox" + id;
-           
-                if(applienceDictionary[id] is TV)
-                    tb.Text = "Input the name of the new channel";
-                  
+
+            if (applienceDictionary[id] is TV)
+                tb.Text = "Input the name of the new channel";
+
             return tb;
         }
         protected ImageButton ImageButton()
@@ -216,12 +222,11 @@ namespace SmartHouseWF.Controls
             imbt.ID = "imagebutton" + id;
             imbt.ToolTip = "Press the image to turn on";
             imbt.Click += imImage_Click;
-           
-                    if(applienceDictionary[id] is TV)
-                    imbt.ImageUrl = @"~\Images1\retro-tv-icon-61526.png";
-                    
 
-            
+            imbt.ImageUrl = @"~\Images1\retro-tv-icon-615261.png";
+            imbt.CssClass = "img-thumbnail";
+
+
             return imbt;
         }
         protected Label LabelofState()

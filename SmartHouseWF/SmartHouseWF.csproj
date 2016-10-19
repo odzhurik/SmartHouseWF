@@ -64,14 +64,12 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Images1\112132-200.png" />
-    <Content Include="Images1\15-Light-Bulb-icon.png" />
+    <Content Include="Images1\112132-2001.png" />
+    <Content Include="Images1\15-Light-Bulb-icon1.png" />
     <Content Include="Images1\back.jpg" />
     <Content Include="Images1\hee2.png" />
-    <Content Include="Images1\hJM2u_croper_ru.png" />
-    <Content Include="Images1\microwave-icon-20.png" />
-    <Content Include="Images1\retro-tv-icon-61526.png" />
-    <Content Include="Images1\secured_by_alarm_system1600.png" />
+    <Content Include="Images1\microwave-icon-201.png" />
+    <Content Include="Images1\retro-tv-icon-615261.png" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -107,7 +105,6 @@
     </Compile>
     <Compile Include="Models\Applience.cs" />
     <Compile Include="Models\Conditioner.cs" />
-    <Compile Include="Models\IChangleable.cs" />
     <Compile Include="Models\Lamp.cs" />
     <Compile Include="Models\Microwave.cs" />
     <Compile Include="Models\TV.cs" />

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SmartHouseWF.Models
 {
-    public class Lamp : Applience, IChangleable
+    public class Lamp : Applience
     {
         int max = 100;
         public Lamp()

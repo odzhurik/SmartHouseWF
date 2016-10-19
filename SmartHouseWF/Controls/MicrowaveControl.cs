@@ -34,42 +34,41 @@ namespace SmartHouseWF.Controls
             bUp = new Button();
             bDown = new Button();
             deleteButton = new Button();
-            if (applienceDictionary[id] is Microwave)
-            {
 
-                tbMicrowave = TextBox();
-                imImageMicro = ImageButton();
-                cbFood = new CheckBox();
-                cbFood.ID = "CheckBoxFood" + id;
-                cbFood.Text = "Food";
-                cbFood.Checked = false;
-                cbFood.AutoPostBack = true;
-                cbFood.CheckedChanged += cbFood_CheckedChanged;
-                bReheat = new Button();
-                bReheat.ID = "ReheatButton" + id;
-                bReheat.CssClass = "btn btn-info";
-                bReheat.Text = "Reheat";
-                bReheat.Click += bReheat_Click;
-                Controls.Add(imImageMicro);
-                GenerateBr();
-                Controls.Add(tbMicrowave);
-                Controls.Add(cbFood);
-                Controls.Add(bReheat);
-                GenerateBr();
-                UpAndDownButtons(bDown, bUp);
-                GenerateBr();
-                lState = LabelofState();
-                lState.ID = "LabelofState" + id;
-                lState.CssClass = "labelStatus";
-                Controls.Add(lState);
-                deleteButton.ID = "deletebutton" + id;
-                deleteButton.Text = "Delete";
-                deleteButton.CssClass = "btn btn-danger";
-                deleteButton.Click += DeleteButtonClick;
-                GenerateBr();
-                Controls.Add(deleteButton);
 
-            }
+            tbMicrowave = TextBox();
+            imImageMicro = ImageButton();
+            cbFood = new CheckBox();
+            cbFood.ID = "CheckBoxFood" + id;
+            cbFood.Text = "Food";
+            cbFood.Checked = false;
+            cbFood.AutoPostBack = true;
+            cbFood.CheckedChanged += cbFood_CheckedChanged;
+            bReheat = new Button();
+            bReheat.ID = "ReheatButton" + id;
+            bReheat.CssClass = "btn btn-info";
+            bReheat.Text = "Reheat";
+            bReheat.Click += bReheat_Click;
+            Controls.Add(imImageMicro);
+            GenerateBr();
+            Controls.Add(tbMicrowave);
+            Controls.Add(cbFood);
+            Controls.Add(bReheat);
+            GenerateBr();
+            UpAndDownButtons(bDown, bUp);
+            GenerateBr();
+            lState = LabelofState();
+            lState.ID = "LabelofState" + id;
+            lState.CssClass = "labelStatus";
+            Controls.Add(lState);
+            deleteButton.ID = "deletebutton" + id;
+            deleteButton.Text = "Delete";
+            deleteButton.CssClass = "btn btn-danger";
+            deleteButton.Click += DeleteButtonClick;
+            GenerateBr();
+            Controls.Add(deleteButton);
+
+
         }
         private void DeleteButtonClick(object sender, EventArgs e)
         {
@@ -80,37 +79,37 @@ namespace SmartHouseWF.Controls
 
         private void bUp_Click(object sender, EventArgs e)
         {
-                   
-            
-                    if(applienceDictionary[id] is Microwave)
-                    {
-                        Microwave micro = applienceDictionary[id] as Microwave;
-                        micro.Up();
-                        lState.Text = micro.ShowStatus();
-
-                        
-                    }
-               
 
             if (!applienceDictionary[id].State)
                 lState.Text = " Turn on " + applienceDictionary[id].Name;
+            else
+            {
+                Microwave micro = applienceDictionary[id] as Microwave;
+                micro.Up();
+                lState.Text = micro.ShowStatus();
+
+
+            }
+
+
+
         }
 
         private void bDown_Click(object sender, EventArgs e)
         {
-         
-                    if(applienceDictionary[id] is Microwave)
-                    {
-                        Microwave micro = applienceDictionary[id] as Microwave;
-                        micro.Down();
-                        lState.Text = micro.ShowStatus();
-                        
-                    }
-                
-            if (!applienceDictionary[id].State && applienceDictionary[id] is Microwave)
+            if (!applienceDictionary[id].State)
             {
                 lState.Text = " Turn on " + applienceDictionary[id].Name;
             }
+            else
+            {
+                Microwave micro = applienceDictionary[id] as Microwave;
+                micro.Down();
+                lState.Text = micro.ShowStatus();
+
+            }
+
+
         }
 
         private void cbFood_CheckedChanged(object sender, EventArgs e)
@@ -130,14 +129,13 @@ namespace SmartHouseWF.Controls
         }
         private void imImage_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            if (applienceDictionary[id] is Microwave)
-            {
-                applienceDictionary[id].On_Off();
-                lState.Text = applienceDictionary[id].ShowStatus();
 
-                cbFood.Checked = false;
-            }
-            
+            applienceDictionary[id].On_Off();
+            lState.Text = applienceDictionary[id].ShowStatus();
+
+            cbFood.Checked = false;
+
+
 
         }
 
@@ -148,22 +146,22 @@ namespace SmartHouseWF.Controls
             Microwave micro = applienceDictionary[id] as Microwave;
 
 
-            micro.Cook();
 
-            if (!cbFood.Checked)
+
+            if (!cbFood.Checked && !applienceDictionary[id].State)
             {
                 lState.ForeColor = System.Drawing.Color.Red;
-                lState.Text = "Check the food";
+                lState.Text = "Check the food or Turn on Microwave";
             }
-            if (!applienceDictionary[id].State)
-            {
-                lState.ForeColor = System.Drawing.Color.Red;
-                lState.Text = "Turn on Microwave";
-            }
-            micro.On_Off();
 
-            ScriptSet();
-            lState.Text = "Working ";
+            else
+            {
+                micro.Cook();
+                micro.On_Off();
+
+                ScriptSet();
+                lState.Text = "Working ";
+            }
 
         }
         private Label Label(string text)
@@ -179,7 +177,7 @@ namespace SmartHouseWF.Controls
         {
             TextBox tb = new TextBox();
             tb.ID = "TextBox" + id;
-              return tb;
+            return tb;
         }
         protected ImageButton ImageButton()
         {
@@ -187,11 +185,11 @@ namespace SmartHouseWF.Controls
             imbt.ID = "imagebutton" + id;
             imbt.ToolTip = "Press the image to turn on";
             imbt.Click += imImage_Click;
-          
-                 if(applienceDictionary[id] is Microwave)
-                    imbt.ImageUrl = @"~\Images1\microwave-icon-20.png";
-                    
-                
+
+            imbt.ImageUrl = @"~\Images1\microwave-icon-201.png";
+            imbt.CssClass = "img-thumbnail";
+
+
             return imbt;
         }
         protected Label LabelofState()
@@ -204,8 +202,8 @@ namespace SmartHouseWF.Controls
         protected void ScriptSet()
         {
             string script = " ";
-           
-                script = @"
+
+            script = @"
 <script>
          //var isCallPostBack = false;
 //window.onload= function(){
@@ -240,8 +238,8 @@ var get = function (id) {
 </script>
              ";
 
-                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "CountDown", script);
-        
+            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "CountDown", script);
+
 
 
         }

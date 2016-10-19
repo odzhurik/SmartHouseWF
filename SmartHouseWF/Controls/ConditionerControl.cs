@@ -25,35 +25,34 @@ namespace SmartHouseWF.Controls
         }
         protected void Initializer()
         {
-            if (applienceDictionary[id] is Conditioner)
-            {
-                CssClass = "app-div";
-                Controls.Add(Label(applienceDictionary[id].Name + "<br />"));
-                deleteButton = new Button();
 
-                imImageCond = ImageButton();
-                tbTemperature = TextBox();
-                bAirCondition = new Button();
-                bAirCondition.ID = "AirConButton" + id;
-                bAirCondition.Text = "Set";
-                bAirCondition.CssClass = "btn btn-primary";
-                bAirCondition.Click += bAirCondition_Click;
-                Controls.Add(imImageCond);
-                GenerateBr();
-                Controls.Add(tbTemperature);
-                Controls.Add(bAirCondition);
-                GenerateBr();
-                lState = LabelofState();
-                lState.ID = "LabelofState" + id;
-                lState.CssClass = "labelStatus";
-                Controls.Add(lState);
-                deleteButton.ID = "deletebutton" + id;
-                deleteButton.Text = "Delete";
-                deleteButton.CssClass = "btn btn-danger";
-                deleteButton.Click += DeleteButtonClick;
-                GenerateBr();
-                Controls.Add(deleteButton);
-            }
+            CssClass = "app-div";
+            Controls.Add(Label(applienceDictionary[id].Name + "<br />"));
+            deleteButton = new Button();
+
+            imImageCond = ImageButton();
+            tbTemperature = TextBox();
+            bAirCondition = new Button();
+            bAirCondition.ID = "AirConButton" + id;
+            bAirCondition.Text = "Set";
+            bAirCondition.CssClass = "btn btn-primary";
+            bAirCondition.Click += bAirCondition_Click;
+            Controls.Add(imImageCond);
+            GenerateBr();
+            Controls.Add(tbTemperature);
+            Controls.Add(bAirCondition);
+            GenerateBr();
+            lState = LabelofState();
+            lState.ID = "LabelofState" + id;
+            lState.CssClass = "labelStatus";
+            Controls.Add(lState);
+            deleteButton.ID = "deletebutton" + id;
+            deleteButton.Text = "Delete";
+            deleteButton.CssClass = "btn btn-danger";
+            deleteButton.Click += DeleteButtonClick;
+            GenerateBr();
+            Controls.Add(deleteButton);
+
         }
         private void DeleteButtonClick(object sender, EventArgs e)
         {
@@ -126,9 +125,8 @@ namespace SmartHouseWF.Controls
             imbt.ToolTip = "Press the image to turn on";
             imbt.Click += imImage_Click;
 
-            if (applienceDictionary[id] is Conditioner)
-                imbt.ImageUrl = @"~\Images1\112132-200.png";
-
+            imbt.ImageUrl = @"~\Images1\112132-2001.png";
+            imbt.CssClass = "img-thumbnail";
 
 
             return imbt;

@@ -131,6 +131,7 @@ namespace SmartHouseWF.Controls
         {
 
             applienceDictionary[id].On_Off();
+            lState.ForeColor = System.Drawing.Color.Black;
             lState.Text = applienceDictionary[id].ShowStatus();
 
             cbFood.Checked = false;
@@ -160,6 +161,7 @@ namespace SmartHouseWF.Controls
                 micro.On_Off();
 
                 ScriptSet();
+                lState.ForeColor = System.Drawing.Color.Black;
                 lState.Text = "Working ";
             }
 

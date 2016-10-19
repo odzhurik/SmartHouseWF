@@ -63,6 +63,7 @@ namespace SmartHouseWF.Controls
         {
 
             applienceDictionary[id].On_Off();
+            lState.ForeColor = System.Drawing.Color.Black;
             lState.Text = applienceDictionary[id].ShowStatus();
 
         }

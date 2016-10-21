@@ -62,7 +62,7 @@ namespace SmartHouseWF.Controls
         private void imImage_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
 
-            applienceDictionary[id].On_Off();
+            applienceDictionary[id].OnOff();
             lState.ForeColor = System.Drawing.Color.Black;
             lState.Text = applienceDictionary[id].ShowStatus();
 
@@ -77,10 +77,10 @@ namespace SmartHouseWF.Controls
                 if ((!String.IsNullOrEmpty(tbTemperature.Text)) && (isInt))
                 {
                     con.Temperature = Convert.ToInt32(tbTemperature.Text);
-                    con.Air_Conditioning();
+                    con.AirConditioning();
                     lState.ForeColor = System.Drawing.Color.Black;
                     lState.Text = con.air_conditioning;
-                    con.On_Off();
+                    con.OnOff();
                     ScriptSet(con.Temperature);
                 }
                 else

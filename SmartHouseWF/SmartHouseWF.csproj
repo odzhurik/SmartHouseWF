@@ -81,6 +81,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\custom.pubxml" />
     <None Include="Properties\PublishProfiles\custom2.pubxml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
@@ -105,6 +106,11 @@
     </Compile>
     <Compile Include="Models\Applience.cs" />
     <Compile Include="Models\Conditioner.cs" />
+    <Compile Include="Models\IChangeable.cs" />
+    <Compile Include="Models\IChannel.cs" />
+    <Compile Include="Models\ICook.cs" />
+    <Compile Include="Models\ISwitchable.cs" />
+    <Compile Include="Models\ITemperatureable.cs" />
     <Compile Include="Models\Lamp.cs" />
     <Compile Include="Models\Microwave.cs" />
     <Compile Include="Models\TV.cs" />

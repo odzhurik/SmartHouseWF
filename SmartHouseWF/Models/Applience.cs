@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SmartHouseWF.Models
 {
-    public abstract class Applience
+    public abstract class Applience: ISwitchable
     {
         private bool state;
         private string name;
@@ -31,7 +31,7 @@ namespace SmartHouseWF.Models
                 return state;
             }
         }
-        public  virtual void On_Off()
+        public  virtual void OnOff()
         {
             if (State)
                 State = false;

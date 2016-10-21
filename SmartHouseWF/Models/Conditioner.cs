@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SmartHouseWF.Models
 {
-    public class Conditioner:Applience
+    public class Conditioner:Applience, ITemperatureable
     {
         private int temperature;
         private int defaultTemp;
@@ -26,14 +26,14 @@ namespace SmartHouseWF.Models
                 return temperature;
             }
         }
-        public void Air_Conditioning()
+        public void AirConditioning()
         {
             if (Temperature > defaultTemp)
-            
-                air_conditioning = "heating to "+ Temperature;
-                           
+
+                air_conditioning = "heating to " + Temperature;
+
             else
-               air_conditioning = "cooling to "+ Temperature;
+                air_conditioning = "cooling to " + Temperature;
 
             defaultTemp = Temperature;
         }
